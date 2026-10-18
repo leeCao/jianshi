@@ -1,8 +1,10 @@
 # 笺事
 
-A lightweight macOS menu bar todo app built with SwiftUI and AppKit.
+![笺事桌面图标](docs/icon.png)
 
-一个面向 macOS 13+ 的菜单栏待办工具，使用 SwiftUI 和 AppKit 构建，不占用 Dock。
+用完即走，随时查看。笺事是一款放在 macOS 菜单栏里的轻量待办工具，打开就能记下想法，完成后随手收起。
+
+使用 SwiftUI 和 AppKit 构建，支持 macOS 13+，不占用 Dock。
 
 ![笺事应用界面，使用虚构待办数据](docs/screenshot.png)
 
@@ -15,6 +17,13 @@ A lightweight macOS menu bar todo app built with SwiftUI and AppKit.
 - 待办数据保存在本机，无需注册账号。
 
 点击菜单栏图标打开窗口，点击分组旁的加号新建待办，点击待办内容查看详情。左侧圆圈用于完成或恢复事项；详情页支持用 ⌘E 进入编辑。
+
+## 快捷使用
+
+- 想到一件事时，点菜单栏图标，直接在对应分组旁新建待办。
+- 做完一件事，点左侧圆圈即可完成；需要复查时，在顶部打开已完成事项。
+- 需要改内容时，点开待办详情，按 ⌘E 编辑，按 Esc 返回。
+- 分组较多时横向滚动窗口，分组内的待办可以独立上下滚动。
 
 ## 构建
 
@@ -91,6 +100,36 @@ python3 scripts/subset-title-font.py /path/to/ZhuqueFangsong-Regular.ttf
 正常构建直接使用已附带的子集，不需要 Python 或原版字体。纸边素材可以用 `python3 scripts/render-desk-rim.py` 重新生成。应用图标直接使用 `Resources/Jianshi.icns`。
 
 第三方字体和图标的来源及许可证见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
+## 修改项目
+
+项目目录是 `/Users/leec/Documents/code/todo`。常用入口如下：
+
+| 想修改的内容 | 文件或目录 |
+| --- | --- |
+| 界面、按钮和交互 | `Sources/Menuminder/TodoPanel.swift` |
+| 数据读写、分组和待办逻辑 | `Sources/Menuminder/TodoStore.swift`、`TodoItem.swift` |
+| 字体和字号 | `Sources/Menuminder/PanelTypography.swift`、`Sources/Menuminder/Assets/Fonts` |
+| 颜色、纸张和窗口材质 | `Sources/Menuminder/Stationery.swift`、`PaperSheetCard.swift` |
+| 菜单栏图标 | `Sources/Menuminder/JianshiBrand.swift` |
+| 桌面图标 | `Resources/Jianshi.icns` |
+| 应用名称、版本和最低系统版本 | `Resources/Info.plist` |
+| 构建应用 | `scripts/build-app.sh` |
+
+修改后，在项目目录运行：
+
+```bash
+./scripts/build-app.sh
+open dist/笺事.app
+```
+
+如果要把修改同步到 GitHub：
+
+```bash
+git add .
+git commit -m "描述你的修改"
+git push
+```
 
 ## 许可证
 

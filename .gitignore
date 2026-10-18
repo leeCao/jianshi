@@ -12,6 +12,7 @@
 !/docs/
 /docs/*
 !/docs/screenshot.png
+!/docs/icon.png
 
 # Local files inside the allowed directories.
 .DS_Store
