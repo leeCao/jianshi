@@ -1,0 +1,24 @@
+# Only application source, resources, tests and maintenance scripts belong in Git.
+/*
+!/.gitignore
+!/Package.swift
+!/README.md
+!/LICENSE
+!/THIRD_PARTY_NOTICES.md
+!/Sources/
+!/Resources/
+!/Tests/
+!/scripts/
+!/docs/
+/docs/*
+!/docs/screenshot.png
+
+# Local files inside the allowed directories.
+.DS_Store
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.log
+*.bak
+*.swp
